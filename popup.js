@@ -7,7 +7,15 @@ const setCurrentStorage = (color) => {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+const getCurrentStorage = () => {
+    return new Promise(function(resolve) {
+        chrome.storage.sync.get(function(result) {
+            resolve(result);
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
     let colorPicker = document.getElementById('colorPicker');
     function watchColorPicker(event) {
         if(event.target){
@@ -16,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     colorPicker.addEventListener("input", watchColorPicker, false);
+    const defaultColor = await getCurrentStorage()
+    colorPicker.value = defaultColor.fakePngDetectorColor
 });
 
 
