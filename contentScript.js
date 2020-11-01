@@ -29,10 +29,9 @@ const getCurrentStorage = () => {
     });
 }
 
-const editImages = async () => {
+ const editImages = async () => {
     const imagesOfWebsite = document.getElementsByTagName("img")
     const storage  = await getCurrentStorage();
-    console.log(storage)
     for (imageHtml of imagesOfWebsite) { 
         const backgroundImage = window.getComputedStyle(imageHtml).background
         if(backgroundImage.includes("linear-gradient(45deg, rgb(239, 239, 239) 25%, rgba(239, 239, 239, 0) 25%, rgba(239, 239, 239, 0) 75%, rgb(239, 239, 239) 75%, rgb(239, 239, 239)) repeat scroll 0px 0px / 21px 21px padding-box border-box, rgb(255, 255, 255) linear-gradient(45deg, rgb(239, 239, 239) 25%, rgba(239, 239, 239, 0) 25%, rgba(239, 239, 239, 0) 75%, rgb(239, 239, 239) 75%, rgb(239, 239, 239))")){
