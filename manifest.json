@@ -1,0 +1,34 @@
+{
+    "name": "FakePngDetector",
+    "version": "1.0",
+    "description": "Fake Png Detector",
+    "manifest_version": 2,
+    "permissions": ["activeTab", "declarativeContent", "storage"],
+    "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+    },
+    "page_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/get_started16.jpeg",
+            "32": "images/get_started32.jpeg",
+            "48": "images/get_started48.jpeg",
+            "128": "images/get_started128.jpeg"
+        },
+        "icons": {
+            "16": "images/get_started16.jpeg",
+            "32": "images/get_started32.jpeg",
+            "48": "images/get_started48.jpeg",
+            "128": "images/get_started128.jpeg"
+        }
+    },
+    "options_page": "options.html",
+    "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "css": ["myStyles.css"],
+          "js": ["contentScript.js"]
+        }
+    ]
+  }
