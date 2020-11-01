@@ -10,6 +10,7 @@
     },
     "page_action": {
         "default_popup": "popup.html",
+        "default_title": "Fake Png Detector",
         "default_icon": {
             "16": "images/get_started16.jpeg",
             "32": "images/get_started32.jpeg",
