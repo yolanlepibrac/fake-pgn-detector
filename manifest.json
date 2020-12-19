@@ -8,20 +8,16 @@
     "scripts": ["background.js"],
     "persistent": false
     },
+    "default_icon": "images/fakePngDetector38.png",
     "page_action": {
         "default_popup": "popup.html",
         "default_title": "Fake Png Detector",
-        "default_icon": {
-            "16": "images/get_started16.jpeg",
-            "32": "images/get_started32.jpeg",
-            "48": "images/get_started48.jpeg",
-            "128": "images/get_started128.jpeg"
-        },
+        "default_icon": "images/fakePngDetector38.png",
         "icons": {
-            "16": "images/get_started16.jpeg",
-            "32": "images/get_started32.jpeg",
-            "48": "images/get_started48.jpeg",
-            "128": "images/get_started128.jpeg"
+            "16": "images/fakePngDetector16.png",
+            "32": "images/fakePngDetector32.png",
+            "48": "images/fakePngDetector48.png",
+            "128": "images/fakePngDetector128.png"
         }
     },
     "options_page": "options.html",
