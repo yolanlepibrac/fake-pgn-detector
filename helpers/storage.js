@@ -1,4 +1,4 @@
-export const setCurrentStorage = (color) => {
+const setCurrentStorage = (color) => {
     return new Promise((resolve) => {
         chrome.storage.sync.set({fakePngDetectorColor:color}, (result) =>{
             resolve(result);
@@ -6,7 +6,7 @@ export const setCurrentStorage = (color) => {
     });
 }
 
-export const getCurrentStorage = () => {
+const getCurrentStorage = () => {
     return new Promise(function(resolve) {
         chrome.storage.sync.get(function(result) {
             resolve(result);

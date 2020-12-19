@@ -1,29 +1,29 @@
-import {getCurrentStorage, setCurrentStorage} from "./helpers/storage"
+// Popup control the menu opened when click on extension icon
 
-
-document.addEventListener('DOMContentLoaded', async () => {
-    // Get color picker of popup.html
-    let colorPicker = document.getElementById('fakePngDetector-colorPicker');
-    function handleChangeColor(event) {
-        if(event.target){
-            setCurrentStorage(event.target.value)
-            editImages(event.target.value)
+const initializedPopupColorPicker = () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+        let colorPicker = document.getElementById('fakePngDetector-colorPicker');
+        function handleChangeColor(event) {
+            if(event.target){
+                setCurrentStorage(event.target.value)
+                setCurrentColorToPng(event.target.value)
+            }
         }
-    }
-    // Attached handleChangeColor to picker
-    colorPicker.addEventListener("input", handleChangeColor, false);
-    // Set default color to picker Element (default color is declared in background)
-    const currentStorage = await getCurrentStorage()
-    colorPicker.value = currentStorage.fakePngDetectorColor
-});
+        colorPicker.addEventListener("input", handleChangeColor, false);
+        const currentStorage = await getCurrentStorage()
+        colorPicker.value = currentStorage.fakePngDetectorColor
+    });
+}
 
 
-const editImages = (inputColor) => {
+const setCurrentColorToPng = (inputColor) => {
+    // imagesOfWebsite is declared here to allow multiple changes of color
+    let imagesOfWebsite = []
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.executeScript(
             tabs[0].id,
             {code: `
-            let imagesOfWebsite = document.getElementsByTagName("img");
+            imagesOfWebsite = document.getElementsByTagName("img");
             for (imageHtml of imagesOfWebsite) { 
                 const backgroundImage = window.getComputedStyle(imageHtml).background;
                 if(backgroundImage.includes("linear-gradient(45deg") && backgroundImage.includes("21px 21px")){
@@ -36,3 +36,5 @@ const editImages = (inputColor) => {
         );
     });
 }
+
+initializedPopupColorPicker()
