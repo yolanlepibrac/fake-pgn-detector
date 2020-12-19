@@ -1,4 +1,3 @@
-
 const setCurrentStorage = (color) => {
     return new Promise((resolve) => {
         chrome.storage.sync.set({fakePngDetectorColor:color}, (result) =>{
@@ -16,26 +15,28 @@ const getCurrentStorage = () => {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    let colorPicker = document.getElementById('colorPicker');
-    function watchColorPicker(event) {
+    // Get color picker of popup.html
+    let colorPicker = document.getElementById('fakePngDetector-colorPicker');
+    function handleChangeColor(event) {
         if(event.target){
             setCurrentStorage(event.target.value)
             editImages(event.target.value)
         }
     }
-    colorPicker.addEventListener("input", watchColorPicker, false);
-    const defaultColor = await getCurrentStorage()
-    colorPicker.value = defaultColor.fakePngDetectorColor
+    // Attached handleChangeColor to picker
+    colorPicker.addEventListener("input", handleChangeColor, false);
+    // Set default color to picker Element (default color is declared in background)
+    const currentStorage = await getCurrentStorage()
+    colorPicker.value = currentStorage.fakePngDetectorColor
 });
 
 
 const editImages = (inputColor) => {
-    let imagesOfWebsite = []
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         chrome.tabs.executeScript(
             tabs[0].id,
             {code: `
-            imagesOfWebsite = document.getElementsByTagName("img");
+            let imagesOfWebsite = document.getElementsByTagName("img");
             for (imageHtml of imagesOfWebsite) { 
                 const backgroundImage = window.getComputedStyle(imageHtml).background;
                 if(backgroundImage.includes("linear-gradient(45deg") && backgroundImage.includes("21px 21px")){
