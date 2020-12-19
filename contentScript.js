@@ -1,6 +1,6 @@
 // ContentScript run in a page context (defined in manifest)
 
-const editImages = async (color) => {
+const editImages = (color) => {
     const imagesOfWebsite = document.getElementsByTagName("img")
     for (imageHtml of imagesOfWebsite) { 
         const backgroundImage = window.getComputedStyle(imageHtml).background
