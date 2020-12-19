@@ -1,18 +1,5 @@
-const setCurrentStorage = (color) => {
-    return new Promise((resolve) => {
-        chrome.storage.sync.set({fakePngDetectorColor:color}, (result) =>{
-            resolve(result);
-        });
-    });
-}
+import {getCurrentStorage, setCurrentStorage} from "./helpers/storage"
 
-const getCurrentStorage = () => {
-    return new Promise(function(resolve) {
-        chrome.storage.sync.get(function(result) {
-            resolve(result);
-        });
-    });
-}
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Get color picker of popup.html
