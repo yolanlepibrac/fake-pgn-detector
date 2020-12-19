@@ -17,10 +17,10 @@ const initializedPopupColorPicker = async () => {
 
 
 const setCurrentColorToPng = (inputColor) => {
-    // imagesOfWebsite is declared here to allow multiple changes of color
-    let imagesOfWebsite = []
-    chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-        chrome.tabs.executeScript({code: `getCurrentColorAndSetToPng()`});
+    chrome.tabs.query({}, (tabs) => {
+        tabs.map((_tab, index) => {
+            chrome.tabs.executeScript(tabs[index].id, {code: `getCurrentColorAndSetToPng()`});
+        })
     });
 }
 
