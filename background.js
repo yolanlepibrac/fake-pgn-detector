@@ -3,6 +3,9 @@ chrome.runtime.onInstalled.addListener(function() {
     chrome.storage.local.set({fakePngDetectorColor: '#63C6FF'}, function() {
       console.log("Initialized color to #63C6FF");
     });
+    chrome.storage.local.set({fakePngDetectorActive: true}, function() {
+      console.log("Initialized active to true");
+    });
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
         chrome.declarativeContent.onPageChanged.addRules([{
             conditions: [

@@ -13,3 +13,12 @@ const getCurrentStorage = () => {
         });
     });
 }
+
+const setStorageActive = (value) => {
+    return new Promise((resolve) => {
+        chrome.storage.local.set({fakePngDetectorActive:value}, (result) =>{
+            resolve(result);
+        });
+    });
+}
+
