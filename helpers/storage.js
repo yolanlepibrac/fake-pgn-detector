@@ -1,6 +1,6 @@
 const setCurrentStorage = (color) => {
     return new Promise((resolve) => {
-        chrome.storage.sync.set({fakePngDetectorColor:color}, (result) =>{
+        chrome.storage.local.set({fakePngDetectorColor:color}, (result) =>{
             resolve(result);
         });
     });
@@ -8,7 +8,7 @@ const setCurrentStorage = (color) => {
 
 const getCurrentStorage = () => {
     return new Promise(function(resolve) {
-        chrome.storage.sync.get(function(result) {
+        chrome.storage.local.get(function(result) {
             resolve(result);
         });
     });

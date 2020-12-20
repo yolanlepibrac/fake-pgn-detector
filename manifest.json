@@ -3,12 +3,11 @@
     "version": "1.0",
     "description": "Fake Png Detector",
     "manifest_version": 2,
-    "permissions": ["activeTab", "declarativeContent", "storage", "http://*/", "https://*/"],
+    "permissions": ["activeTab", "declarativeContent", "storage", "http://*/", "https://*/", "unlimitedStorage"],
     "background": {
     "scripts": ["background.js"],
     "persistent": false
     },
-    "default_icon": "images/fakePngDetector38.png",
     "page_action": {
         "default_popup": "popup.html",
         "default_title": "Fake Png Detector",

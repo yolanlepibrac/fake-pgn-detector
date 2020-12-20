@@ -1,6 +1,6 @@
 chrome.runtime.onInstalled.addListener(function() {
     // main js code running in background
-    chrome.storage.sync.set({fakePngDetectorColor: '#63C6FF'}, function() {
+    chrome.storage.local.set({fakePngDetectorColor: '#63C6FF'}, function() {
       console.log("Initialized color to #63C6FF");
     });
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
