@@ -24,4 +24,14 @@ const setCurrentColorToPng = (inputColor) => {
     });
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('active').addEventListener('change', (event) => {
+        console.log(event.target.value)
+        setCurrentStorage("red")
+        setCurrentColorToPng("red")
+
+      })
+});
+
+
 initializedPopupColorPicker()
