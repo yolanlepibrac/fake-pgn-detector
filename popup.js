@@ -22,8 +22,8 @@ const refreshTab = () => {
         chrome.tabs.executeScript(tab.id, {code: code});
     })
 }
+
 const initializedPopup = async () => {
-    
     document.addEventListener('DOMContentLoaded', async () => {
         const currentStorage = await getCurrentStorage()
         const colorPicker = document.getElementById('fakePngDetector-colorPicker');

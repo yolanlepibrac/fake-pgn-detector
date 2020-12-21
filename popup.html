@@ -2,13 +2,35 @@
 <html>
   <head>
     <style>
+      #popup{
+        width:142px; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+      }
+
+      #fakePngDetector-colorPicker{
+        width:100%; 
+        border-width: 0px; 
+        background-color: white;
+      }
+      
+      #checkboxContainer{
+        width:100%; display: flex; align-items: center;
+      }
+
+      #checkboxLabel{
+        margin-left: 6px;
+      }
     </style>
   </head>
-  <body style="width:135px; display: flex; flex-direction: column; align-items: center;">
-    <input type="color" value="#ff0000" id="fakePngDetector-colorPicker" style="width:100%; border-width: 0px; background-color: white;">
-    <div style="width:100%; display: flex; align-items: center;">
-      <input type="checkbox" id="fakePngDetector-activeEverywhere" name="activeEverywhere">
-      <label for="activeEverywhere" style="margin-left: 6px;">Active everywhere</label>
+  <body>
+    <div id="popup">
+      <input type="color" value="#ff0000" id="fakePngDetector-colorPicker">
+      <div id="checkboxContainer">
+        <input type="checkbox" id="fakePngDetector-activeEverywhere" name="activeEverywhere">
+        <label for="activeEverywhere" id="checkboxLabel">Active on all images</label>
+      </div>
     </div>
     <script src="helpers/storage.js"></script>
     <script src="popup.js"></script>
