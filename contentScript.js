@@ -3,7 +3,7 @@
 
 const hasGoogleGradientColor = (backgroundImage) => {
     const backgroundImageTrim = backgroundImage.replace(/\s/g, '');
-    if(backgroundImageTrim.includes("21px21px")){
+    if(backgroundImageTrim.includes("21px21px") && backgroundImageTrim.includes("rgba(239,239,239,0)")){
         return true
     }
     return false
