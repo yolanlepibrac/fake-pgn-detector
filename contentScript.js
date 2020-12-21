@@ -16,7 +16,7 @@ const editImages = (color) => {
 const getCurrentColorAndSetToPng = async () => {
     const storage  = await getCurrentStorage();
     const color = storage.fakePngDetectorColor
-    const active = storage.fakePngDetectorActive
+    const active = storage.fakePngDetectorActiveEverywhere
     if(active){
         editImages(color)
     }

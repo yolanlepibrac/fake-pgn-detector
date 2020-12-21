@@ -35,7 +35,7 @@ const setColorToPng = () => {
 document.addEventListener('DOMContentLoaded', async () =>  {
     const currentStorage = await getCurrentStorage()
     const checkboxActive = document.getElementById('active')
-    checkboxActive.checked = currentStorage.fakePngDetectorActive
+    checkboxActive.checked = currentStorage.fakePngDetectorActiveEverywhere
     checkboxActive.addEventListener('change', (event) => {
         if(event.target.checked){
             setCurrentColorToPng()

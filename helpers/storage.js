@@ -16,7 +16,7 @@ const getCurrentStorage = () => {
 
 const setActiveToStorage = (value) => {
     return new Promise((resolve) => {
-        chrome.storage.local.set({fakePngDetectorActive:value}, (result) =>{
+        chrome.storage.local.set({fakePngDetectorActiveEverywhere:value}, (result) =>{
             resolve(result);
         });
     });
