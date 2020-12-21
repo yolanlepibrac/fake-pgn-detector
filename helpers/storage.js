@@ -7,7 +7,7 @@ const setColorToStorage = (color) => {
 }
 
 const getCurrentStorage = () => {
-    return new Promise(function(resolve) {
+    return new Promise((resolve) => {
         chrome.storage.local.get(function(result) {
             resolve(result);
         });
