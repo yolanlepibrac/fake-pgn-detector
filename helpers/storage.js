@@ -1,4 +1,4 @@
-const setCurrentStorage = (color) => {
+const setColorToStorage = (color) => {
     return new Promise((resolve) => {
         chrome.storage.local.set({fakePngDetectorColor:color}, (result) =>{
             resolve(result);

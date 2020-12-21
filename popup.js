@@ -5,7 +5,7 @@ const initializedPopupColorPicker = async () => {
         let colorPicker = document.getElementById('fakePngDetector-colorPicker');
         function handleChangeColor(event) {
             if(event.target){
-                setCurrentStorage(event.target.value)
+                setColorToStorage(event.target.value)
                 setCurrentColorToPng(event.target.value)
             }
         }
@@ -24,12 +24,17 @@ const setCurrentColorToPng = (inputColor) => {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('active').addEventListener('change', (event) => {
-        console.log(event.target.value)
-        setCurrentStorage("red")
-        setCurrentColorToPng("red")
-
+document.addEventListener('DOMContentLoaded', async () =>  {
+    const currentStorage = await getCurrentStorage()
+    const checkboxActive = document.getElementById('active')
+    checkboxActive.checked = currentStorage.fakePngDetectorActive
+    checkboxActive.addEventListener('change', (event) => {
+        if(event.target.value){
+            setCurrentColorToPng(currentStorage.fakePngDetectorColor)
+        }else {
+            setCurrentColorToPng("#63C6FF")
+        }
+        setActiveToStorage(event.target.checked)
       })
 });
 
