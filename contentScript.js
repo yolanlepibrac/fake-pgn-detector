@@ -22,6 +22,10 @@ const getCurrentColorAndSetToPng = async () => {
     }
 }
 
+const setTransparentColorToPng = () => {
+    editImages("rgba(0,0,0,0)")
+}
+
 getCurrentColorAndSetToPng()
 document.addEventListener('DOMNodeInserted', getCurrentColorAndSetToPng);
 

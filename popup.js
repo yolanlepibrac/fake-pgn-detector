@@ -6,7 +6,7 @@ const initializedPopupColorPicker = async () => {
         function handleChangeColor(event) {
             if(event.target){
                 setColorToStorage(event.target.value)
-                setCurrentColorToPng(event.target.value)
+                setCurrentColorToPng()
             }
         }
         colorPicker.addEventListener("input", handleChangeColor, false);
@@ -16,10 +16,18 @@ const initializedPopupColorPicker = async () => {
 }
 
 
-const setCurrentColorToPng = (inputColor) => {
+const setCurrentColorToPng = () => {
     chrome.tabs.query({}, (tabs) => {
         tabs.map((_tab, index) => {
             chrome.tabs.executeScript(tabs[index].id, {code: `getCurrentColorAndSetToPng()`});
+        })
+    });
+}
+
+const setColorToPng = () => {
+    chrome.tabs.query({}, (tabs) => {
+        tabs.map((_tab, index) => {
+            chrome.tabs.executeScript(tabs[index].id, {code: `setTransparentColorToPng()`});
         })
     });
 }
@@ -29,10 +37,10 @@ document.addEventListener('DOMContentLoaded', async () =>  {
     const checkboxActive = document.getElementById('active')
     checkboxActive.checked = currentStorage.fakePngDetectorActive
     checkboxActive.addEventListener('change', (event) => {
-        if(event.target.value){
-            setCurrentColorToPng(currentStorage.fakePngDetectorColor)
+        if(event.target.checked){
+            setCurrentColorToPng()
         }else {
-            setCurrentColorToPng("#63C6FF")
+            setColorToPng()
         }
         setActiveToStorage(event.target.checked)
       })
